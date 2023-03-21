@@ -15,30 +15,52 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text(
-              'Kursy walut',
-              style: GoogleFonts.raleway(letterSpacing: 2),
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Center(
+              child: Text(
+                'Kursy walut',
+                style: GoogleFonts.raleway(letterSpacing: 2),
+              ),
             ),
+            backgroundColor: Colors.grey[900],
+            bottom: TabBar(
+                indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.white10,
+                ),
+                tabs: [
+                  Tab(
+                    child: Text(
+                      'EUR',
+                      style: GoogleFonts.raleway(),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      'USD',
+                      style: GoogleFonts.raleway(),
+                    ),
+                  ),
+                ]),
           ),
-          backgroundColor: Colors.grey[900],
-        ),
-        body: Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xFF536976),
-                Color(0xFF292E49),
-              ],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
+          body: Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF536976),
+                  Color(0xFF292E49),
+                ],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+              ),
             ),
+            child: const Text(''),
           ),
-          child: const Text(''),
         ),
       ),
     );
