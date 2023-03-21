@@ -5,8 +5,15 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,24 +34,30 @@ class MyApp extends StatelessWidget {
             ),
             backgroundColor: Colors.grey[900],
             bottom: TabBar(
-                indicator: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.white10,
+              onTap: (newIndex) {
+                setState(() {
+                  currentIndex = newIndex;
+                });
+              },
+              indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.white10,
+              ),
+              tabs: [
+                Tab(
+                  child: Text(
+                    'EUR',
+                    style: GoogleFonts.raleway(),
+                  ),
                 ),
-                tabs: [
-                  Tab(
-                    child: Text(
-                      'EUR',
-                      style: GoogleFonts.raleway(),
-                    ),
+                Tab(
+                  child: Text(
+                    'USD',
+                    style: GoogleFonts.raleway(),
                   ),
-                  Tab(
-                    child: Text(
-                      'USD',
-                      style: GoogleFonts.raleway(),
-                    ),
-                  ),
-                ]),
+                ),
+              ],
+            ),
           ),
           body: Container(
             height: double.infinity,
@@ -59,7 +72,20 @@ class MyApp extends StatelessWidget {
                 end: Alignment.bottomLeft,
               ),
             ),
-            child: const Text(''),
+            child: Builder(
+              builder: (context) {
+                if (currentIndex == 0) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [Text('1')],
+                  );
+                }
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [Text('2')],
+                );
+              },
+            ),
           ),
         ),
       ),
