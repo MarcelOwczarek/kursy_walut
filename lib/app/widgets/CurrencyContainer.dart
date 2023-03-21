@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,7 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 class CurrencyContainer extends StatelessWidget {
   const CurrencyContainer({
     super.key,
+    required this.date,
+    required this.exchange_rate,
+    required this.currency_type,
   });
+
+  final String date;
+  final String exchange_rate;
+  final String currency_type;
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +45,34 @@ class CurrencyContainer extends StatelessWidget {
             // Container content
             //
             child: Column(
-              children: const [
-                CurrentDate(),
-                CurrencyExchangeRate(),
-                SizedBox(height: 25),
-                Last30days(),
-                CustomDivider(),
+              children: [
+                // Current date
+                //
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(date,
+                        style: GoogleFonts.poppins(
+                            color: Colors.white, fontSize: 15)),
+                  ),
+                ),
+                // Currency exchange rate
+                //
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(currency_type,
+                        style: GoogleFonts.poppins(
+                            color: Colors.white, fontSize: 23)),
+                    Text(exchange_rate,
+                        style: GoogleFonts.poppins(
+                            color: Colors.white, fontSize: 25)),
+                  ],
+                ),
+                const SizedBox(height: 25),
+                const Last30days(),
+                const CustomDivider(),
               ],
             ),
           ),
@@ -82,48 +111,5 @@ class Last30days extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text('Wykres ostatnie 30 dni ',
         style: GoogleFonts.poppins(color: Colors.white, fontSize: 20));
-  }
-}
-
-class CurrencyExchangeRate extends StatelessWidget {
-  const CurrencyExchangeRate({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          '1 EUR - ',
-          style: GoogleFonts.poppins(color: Colors.white, fontSize: 23),
-        ),
-        Text(
-          '4,71 zł',
-          style: GoogleFonts.poppins(color: Colors.white, fontSize: 25),
-        ),
-      ],
-    );
-  }
-}
-
-class CurrentDate extends StatelessWidget {
-  const CurrentDate({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Text(
-          'Data aktualnego kursu',
-          style: GoogleFonts.poppins(color: Colors.white, fontSize: 15),
-        ),
-      ),
-    );
   }
 }
