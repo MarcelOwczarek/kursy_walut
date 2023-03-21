@@ -25,6 +25,21 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.grey[900],
         ),
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF536976),
+                Color(0xFF292E49),
+              ],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+            ),
+          ),
+          child: const Text(''),
+        ),
       ),
     );
   }
