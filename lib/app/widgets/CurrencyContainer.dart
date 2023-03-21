@@ -2,18 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kursy_walut/app/models/CurrencyModel.dart';
 
 class CurrencyContainer extends StatelessWidget {
   const CurrencyContainer({
     super.key,
-    required this.date,
-    required this.exchange_rate,
     required this.currency_type,
+    required this.currencyModel,
   });
 
-  final String date;
-  final String exchange_rate;
   final String currency_type;
+  final CurrencyModel currencyModel;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +51,7 @@ class CurrencyContainer extends StatelessWidget {
                   alignment: Alignment.topRight,
                   child: Padding(
                     padding: const EdgeInsets.all(20),
-                    child: Text(date,
+                    child: Text(currencyModel.currentdate.toString(),
                         style: GoogleFonts.poppins(
                             color: Colors.white, fontSize: 15)),
                   ),
@@ -65,7 +64,7 @@ class CurrencyContainer extends StatelessWidget {
                     Text(currency_type,
                         style: GoogleFonts.poppins(
                             color: Colors.white, fontSize: 23)),
-                    Text(exchange_rate,
+                    Text(currencyModel.exchangerate,
                         style: GoogleFonts.poppins(
                             color: Colors.white, fontSize: 25)),
                   ],
