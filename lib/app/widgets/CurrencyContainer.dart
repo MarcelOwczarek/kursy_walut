@@ -7,11 +7,9 @@ import 'package:kursy_walut/app/models/CurrencyModel.dart';
 class CurrencyContainer extends StatelessWidget {
   const CurrencyContainer({
     super.key,
-    required this.currency_type,
     required this.currencyModel,
   });
 
-  final String currency_type;
   final CurrencyModel currencyModel;
 
   @override
@@ -61,10 +59,10 @@ class CurrencyContainer extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(currency_type,
+                    Text('Do dodania :)',
                         style: GoogleFonts.poppins(
                             color: Colors.white, fontSize: 23)),
-                    Text(currencyModel.exchangerate,
+                    Text(currencyModel.exchangerate as String,
                         style: GoogleFonts.poppins(
                             color: Colors.white, fontSize: 25)),
                   ],

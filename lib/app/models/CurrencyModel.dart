@@ -7,5 +7,5 @@ class CurrencyModel {
   });
 
   final String currentdate;
-  final String exchangerate;
+  final double exchangerate;
 }
